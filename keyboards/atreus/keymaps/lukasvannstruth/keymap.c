@@ -11,26 +11,36 @@
 #define _NUMNAV 1
 #define _FUNC 2
 
+#define TAPPING_TOGGLE 2
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_TYPING] = LAYOUT( /* Qwerty */
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P    ,
     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN ,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH ,
-    KC_ESC, KC_TAB, KC_LGUI,  KC_LSFT, KC_BSPC,  KC_LALT, KC_LCTRL, KC_SPC,  MO(_NUMNAV), KC_MINS, KC_QUOT, KC_ENT
+    KC_ESC, KC_TAB, KC_LGUI,  KC_LSFT, KC_BSPC,  KC_LALT, KC_LCTRL, KC_SPC,  TT(_NUMNAV), KC_MINS, KC_QUOT, KC_ENT
   ),
-
-  /*
+/*
+  // old numnav layout
+  /
    *  !       @     up     {    }        ||     pgup    7     8     9    *
    *  #     left   down  right  $        ||     pgdn    4     5     6    +
    *  [       ]      (     )    &        ||       `     1     2     3    \
-   * lower  insert super shift bksp ctrl || alt space   fn    .     0    =
+   * lower  insert super shift bksp ctrl || alt space   num    .     0    =
+   /
+  */
+  /*
+   *  -      7     8     9     {         ||         }     home  pgdn  pgup end
+   *  =      4     5     6     [         ||         ]     left  down  up   rght
+   *  `      1     2     3     (         ||         )     "     psng  p\ps nsng
+   *  func   0     lgui  shft  del  ctrl || alt     spce  num   vold  musc volu
    */
   [_NUMNAV] = LAYOUT( /* [> RAISE <] */
-    KC_EXLM, KC_AT,   KC_UP,   KC_LCBR, KC_RCBR,                   KC_PGUP, KC_7,    KC_8,   KC_9, KC_ASTR ,
-    KC_HASH, KC_LEFT, KC_DOWN, KC_RGHT, KC_DLR,                    KC_PGDN, KC_4,    KC_5,   KC_6, KC_PLUS ,
-    KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_AMPR,                   KC_GRV,  KC_1,    KC_2,   KC_3, KC_BSLS ,
-    TG(_FUNC), KC_INS,  KC_LGUI, KC_LSFT, KC_BSPC, KC_LCTL, KC_LALT, KC_SPC,  KC_TRNS, KC_DOT, KC_0, KC_EQL  ),
-  /*
+    KC_MINS,   KC_7,   KC_8,    KC_9, KC_LCBR,                   KC_RCBR, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+    KC_EQL,    KC_4,   KC_5,    KC_6, KC_LBRC,                   KC_RBRC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+    KC_GRV,    KC_1,   KC_2,    KC_3, KC_LPRN,                   KC_RPRN, KC_BSLS, KC_MPRV, KC_MPLY, KC_MNXT,
+    TT(_FUNC), KC_0, KC_LGUI, KC_LSFT, KC_DEL, KC_LCTL, KC_LALT, KC_SPC,  KC_TRNS, KC_VOLD, KC_MSEL, KC_VOLU),
+  /* \ has to go on here somehwere
    * insert home   up  end   pgup       ||      up     F7    F8    F9   F10
    *  del   left  down right pgdn       ||     down    F4    F5    F6   F11
    *       volup             reset      ||             F1    F2    F3   F12
