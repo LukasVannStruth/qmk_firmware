@@ -44,16 +44,8 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 #   LUFA DFU     lufa-dfu
 #   QMK DFU      qmk-dfu
 #   atmega32a    bootloadHID
-ifdef TEENSY2
-    BOOTLOADER = halfkay
-    OPT_DEFS += -DATREUS_TEENSY2
-else
-    BOOTLOADER = caterina
-    OPT_DEFS += -DATREUS_ASTAR
-    ifdef PCBDOWN
-        OPT_DEFS += -DPCBDOWN
-    endif
-endif
+# my atreus has an elite-c thus i use dfu
+BOOTLOADER = qmk-dfu
 
 
 
@@ -72,3 +64,4 @@ AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs (+400)
 LEADER_ENABLE = yes
+TAP_DANCE_ENABLE= yes
