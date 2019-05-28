@@ -15,9 +15,12 @@ the Free Software Foundation, either version 2 of the License, or
 
 #include "../../config.h"
 
+#define LEADER_TIMEOUT 300
+#define LEADER_PER_KEY_TIMING
+/*
 #define TAPPING_TOGGLE 2
 #define TAPPING_TERM 300
-/*
+
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_LAYER_TOGGLE 3
 #define ONESHOT_TIMEOUT 800
